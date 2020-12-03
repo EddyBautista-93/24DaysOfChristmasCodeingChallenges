@@ -72,18 +72,33 @@ namespace _24DaysOfChristmasCodeingChallenges
         //Take the square root of the result.
         //Divide by two.
 
-        
-            public static int PredictAge(params int[] ages)
-            {
 
-            return (int)Math.Sqrt(ages.Sum(x => x * x)) / 2;
+        //public static int PredictAge(params int[] ages)
+        //{
+        //
+        //return (int)Math.Sqrt(ages.Sum(x => x * x)) / 2;
+        //}
+
+        //Day 3 - Disemvowel Trolls
+
+        //Trolls are attacking your comment section!
+        //
+        //A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+        //
+        //Your task is to write a function that takes a string and return a new string with all vowels removed.
+        //
+        //For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+
+        public static string Disemvowel(string str)
+        {       
+            string vowels = "aeiouAEIOU";
+            return new String(str.Where(c => !vowels.Contains(c)).ToArray());        
         }
 
-            private static void Main(string[] args)
+        private static void Main(string[] args)
             {
+            Disemvowel("This website is for losers LOL!");
 
-            int[] ageArray = { 65, 60, 75, 55, 60, 63, 64, 45 };
-            PredictAge(ageArray);
 
             }
         
