@@ -19,52 +19,73 @@ namespace _24DaysOfChristmasCodeingChallenges
         //
         //For the word "strength", solve("strength") = 57
         //-- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20 + 18 = 57 and "ngth" = 14 + 7 + 20 + 8 = 49. The highest is 57.S
-        public static int Solve(string s)
-        {
-            char[] nonConsonantArray = { 'a', 'e', 'i', 'o', 'u' };
-            char[] inputStringArray = s.ToArray();
-            var newWord = new StringBuilder();
-            int numberSum = 0;
-            int largestNumber = 0;
+        //   public static int Solve(string s)
+        //   {
+        //       char[] nonConsonantArray = { 'a', 'e', 'i', 'o', 'u' };
+        //       char[] inputStringArray = s.ToArray();
+        //       var newWord = new StringBuilder();
+        //       int numberSum = 0;
+        //       int largestNumber = 0;
+        //
+        //
+        //       foreach (char c in inputStringArray)
+        //       {
+        //           int index = ((int)char.ToUpper(c) - 64);
+        //           if (!nonConsonantArray.Contains(c))
+        //           {
+        //               newWord.Append(c);
+        //               numberSum += index;
+        //               if (numberSum > largestNumber)
+        //               {
+        //                   largestNumber = numberSum;
+        //               }
+        //           }
+        //           else if (nonConsonantArray.Contains(c))
+        //           {
+        //               newWord.Clear();
+        //               numberSum = 0;
+        //           }
+        //       }
+        //       return largestNumber;
+        //   }
+        //   //shorter way to do it from codewar forums
+        //   //  private static readonly char[] Vowels = { 'a', 'e', 'i', 'o', 'u' };
+        //
+        //   public static int SolveCodeWars(string input)
+        //   {
+        //       char[] Vowels = { 'a', 'e', 'i', 'o', 'u' };
+        //
+        //       return input.ToLowerInvariant()
+        //             .Split(Vowels, StringSplitOptions.RemoveEmptyEntries)
+        //             .Max(s => s.Sum(c => c - 'a' + 1));
+        //   }
 
+        //Day 2 Predict Age
 
-            foreach (char c in inputStringArray)
+        //My grandfather always predicted how old people would get, and right before he passed away he revealed his secret!
+        //
+        //In honor of my grandfather's memory we will write a function using his formula!
+        //
+        //Take a list of ages when each of your great-grandparent died.
+        //Multiply each number by itself.
+        //Add them all together.
+        //Take the square root of the result.
+        //Divide by two.
+
+        
+            public static int PredictAge(params int[] ages)
             {
-                int index = ((int)char.ToUpper(c) - 64);
-                if (!nonConsonantArray.Contains(c))
-                {
-                    newWord.Append(c);
-                    numberSum += index;
-                    if (numberSum > largestNumber)
-                    {
-                        largestNumber = numberSum;
-                    }
-                }
-                else if (nonConsonantArray.Contains(c))
-                {
-                    newWord.Clear();
-                    numberSum = 0;
-                }
+
+            return (int)Math.Sqrt(ages.Sum(x => x * x)) / 2;
+        }
+
+            private static void Main(string[] args)
+            {
+
+            int[] ageArray = { 65, 60, 75, 55, 60, 63, 64, 45 };
+            PredictAge(ageArray);
+
             }
-            return largestNumber;
-        }
-        //shorter way to do it from codewar forums
-        //  private static readonly char[] Vowels = { 'a', 'e', 'i', 'o', 'u' };
-
-        public static int SolveCodeWars(string input)
-        {
-            char[] Vowels = { 'a', 'e', 'i', 'o', 'u' };
-
-            return input.ToLowerInvariant()
-                  .Split(Vowels, StringSplitOptions.RemoveEmptyEntries)
-                  .Max(s => s.Sum(c => c - 'a' + 1));
-        }
-
-        private static void Main(string[] args)
-        {
-            //  Solve("Zodiac");
-            Solve("chruschtschov");
-
-        }
+        
     }
 }
