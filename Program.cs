@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -113,76 +114,85 @@ namespace _24DaysOfChristmasCodeingChallenges
 
         // since we are encryptiing sentences it will be better to build a seprate tool to convert a word
         // to the way its asked.
-        public static string EncryptWord(string word)
-        {
-            char[] charWordArray = word.ToArray();
-
-            // return the asscii code for a single char
-            if (charWordArray.Length == 1)
-            {
-                char onlyLetter = charWordArray[0];
-                int ASCIICodeValueOfNumberChar = (int)onlyLetter;
-                string ASCIILetter = ASCIICodeValueOfNumberChar.ToString();
-                return ASCIILetter;
-
-
-            } // if empty return string empty
-            else if(word == "")
-            {
-                return string.Empty;
-            }
-            // take the 3 main elements we will be working with 
-            char firstLetter = charWordArray[0];
-            char secondLetter = charWordArray[1];
-            char lastLetter = charWordArray[charWordArray.Length - 1];
-            
-            // convert first word to Ascii
-            int ASCIICodeValueOfNumber = (int)firstLetter;
-            string ASCIIStringed = ASCIICodeValueOfNumber.ToString();
-            // swap the second and last letter then add the new 1st indez = ascii code. 
-            charWordArray[1] = lastLetter;
-            charWordArray[charWordArray.Length - 1] = secondLetter;
-            string stringCharWordArray = new string(charWordArray);
-            string encryptedWord = stringCharWordArray.Remove(0, 1).Insert(0, ASCIIStringed);
-            return encryptedWord;
-        }
-
-        // using the tool we created above we are able to create a turn the string into a array and loop through it changing each word to the encryped vers then add it to a new array to convert to a string sentence.
-        public static string EncryptThis(string input)
-        {     
-            string encyrptedInput;
-            int i = 0;
-            string[] inputArray = input.Split();
-            string[] encryptedArray = new string[inputArray.Length];
-
-
-            foreach (string x in inputArray)
-            {
-                string encryptedWord = EncryptWord(x);
-                encryptedArray[i] = encryptedWord;
-                i++;
-            }
-            encyrptedInput = string.Join(" ", encryptedArray);
-            Console.WriteLine(encyrptedInput);
-            return encyrptedInput;
-        }
+        //public static string EncryptWord(string word)
+        //{
+        //    char[] charWordArray = word.ToArray();
+        //
+        //    // return the asscii code for a single char
+        //    if (charWordArray.Length == 1)
+        //    {
+        //        char onlyLetter = charWordArray[0];
+        //        int ASCIICodeValueOfNumberChar = (int)onlyLetter;
+        //        string ASCIILetter = ASCIICodeValueOfNumberChar.ToString();
+        //        return ASCIILetter;
+        //
+        //
+        //    } // if empty return string empty
+        //    else if(word == "")
+        //    {
+        //        return string.Empty;
+        //    }
+        //    // take the 3 main elements we will be working with 
+        //    char firstLetter = charWordArray[0];
+        //    char secondLetter = charWordArray[1];
+        //    char lastLetter = charWordArray[charWordArray.Length - 1];
+        //    
+        //    // convert first word to Ascii
+        //    int ASCIICodeValueOfNumber = (int)firstLetter;
+        //    string ASCIIStringed = ASCIICodeValueOfNumber.ToString();
+        //    // swap the second and last letter then add the new 1st indez = ascii code. 
+        //    charWordArray[1] = lastLetter;
+        //    charWordArray[charWordArray.Length - 1] = secondLetter;
+        //    string stringCharWordArray = new string(charWordArray);
+        //    string encryptedWord = stringCharWordArray.Remove(0, 1).Insert(0, ASCIIStringed);
+        //    return encryptedWord;
+        //}
+        //
+        //// using the tool we created above we are able to create a turn the string into a array and loop through it changing each word to the encryped vers then add it to a new array to convert to a string sentence.
+        //public static string EncryptThis(string input)
+        //{     
+        //    string encyrptedInput;
+        //    int i = 0;
+        //    string[] inputArray = input.Split();
+        //    string[] encryptedArray = new string[inputArray.Length];
+        //
+        //
+        //    foreach (string x in inputArray)
+        //    {
+        //        string encryptedWord = EncryptWord(x);
+        //        encryptedArray[i] = encryptedWord;
+        //        i++;
+        //    }
+        //    encyrptedInput = string.Join(" ", encryptedArray);
+        //    Console.WriteLine(encyrptedInput);
+        //    return encyrptedInput;
+        //}
 
         //test cases 
-       // [TestCase("", "")]
-       // [TestCase("A", "65")]
-       // [TestCase("Ab", "65b")]
-       // [TestCase("Abc", "65cb")]
-       // [TestCase("Abcd", "65dcb")]
-       // [TestCase("A wise old owl lived in an oak", "65 119esi 111dl 111lw 108dvei 105n 97n 111ka")]
-       // [TestCase("The more he saw the less he spoke", "84eh 109ero 104e 115wa 116eh 108sse 104e 115eokp")]
-       // [TestCase("The less he spoke the more he heard", "84eh 108sse 104e 115eokp 116eh 109ero 104e 104dare")]
-       // [TestCase("Why can we not all be like that wise old bird", "87yh 99na 119e 110to 97ll 98e 108eki 116tah 119esi 111dl 98dri")]
-       // [TestCase("Thank you Piotr for all your help", "84kanh 121uo 80roti 102ro 97ll 121ruo 104ple")]
-      
+        // [TestCase("", "")]
+        // [TestCase("A", "65")]
+        // [TestCase("Ab", "65b")]
+        // [TestCase("Abc", "65cb")]
+        // [TestCase("Abcd", "65dcb")]
+        // [TestCase("A wise old owl lived in an oak", "65 119esi 111dl 111lw 108dvei 105n 97n 111ka")]
+        // [TestCase("The more he saw the less he spoke", "84eh 109ero 104e 115wa 116eh 108sse 104e 115eokp")]
+        // [TestCase("The less he spoke the more he heard", "84eh 108sse 104e 115eokp 116eh 109ero 104e 104dare")]
+        // [TestCase("Why can we not all be like that wise old bird", "87yh 99na 119e 110to 97ll 98e 108eki 116tah 119esi 111dl 98dri")]
+        // [TestCase("Thank you Piotr for all your help", "84kanh 121uo 80roti 102ro 97ll 121ruo 104ple")]
 
+        //Day 5 - Count characters in your string
+
+        //The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+        //What if the string is empty? Then the result should be empty object literal, {}.
+
+        public static Dictionary<char, int> Count(string str)
+        {
+            return str.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
+        }
         private static void Main(string[] args)
             {     
-           EncryptThis("AB");
+           
             }
         
     }
