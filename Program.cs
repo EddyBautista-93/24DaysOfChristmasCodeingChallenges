@@ -186,10 +186,53 @@ namespace _24DaysOfChristmasCodeingChallenges
 
         //What if the string is empty? Then the result should be empty object literal, {}.
 
-        public static Dictionary<char, int> Count(string str)
+        //public static Dictionary<char, int> Count(string str)
+        //{
+        //    return str.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
+        //}
+
+        // Day 5 longest_palindrome
+
+        // Longest Palindrome
+        // 
+        // Find the length of the longest substring in the given string s that is the same in reverse.
+        // 
+        // As an example, if the input was “I like racecars that go fast”, the substring(racecar) length would be 7.
+        // 
+        // If the length of the input string is 0, the return value must be 0.
+        // 
+        // Example:
+        // "a" -> 1 
+        // "aab" -> 2  
+        // "abcde" -> 1
+        // "zzbaabcd" -> 4
+        // "" -> 0
+
+        // first we want to check if the string is palindrome so we create a tool method
+        public static bool IsPalindrome(string str)
         {
-            return str.GroupBy(c => c).ToDictionary(g => g.Key, g => g.Count());
+            var arr = str.ToCharArray();
+            Array.Reverse(arr);
+            var reversed = new string(arr);
+            return str == reversed;
         }
+
+
+
+        public static int GetLongestPalindrome(string str)
+        {
+            if (str == null) return 0;
+
+            int max = 0;
+            for (int i = 0; i < str.Length; ++i)
+                for (int j = i; j < str.Length; ++j)
+                    if (IsPalindrome(str.Substring(i, j - i + 1)))
+                        max = Math.Max(max, j - i + 1);
+
+            return max;
+        }
+
+
         private static void Main(string[] args)
             {     
            
