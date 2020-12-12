@@ -209,31 +209,74 @@ namespace _24DaysOfChristmasCodeingChallenges
         // "" -> 0
 
         // first we want to check if the string is palindrome so we create a tool method
-        public static bool IsPalindrome(string str)
+        //public static bool IsPalindrome(string str)
+        //{
+        //    var arr = str.ToCharArray();
+        //    Array.Reverse(arr);
+        //    var reversed = new string(arr);
+        //    return str == reversed;
+        //}
+        //
+        //public static int GetLongestPalindrome(string str)
+        //{
+        //    if (str == null) return 0;
+        //
+        //    int max = 0;
+        //    for (int i = 0; i < str.Length; ++i)
+        //        for (int j = i; j < str.Length; ++j)
+        //            if (IsPalindrome(str.Substring(i, j - i + 1)))
+        //                max = Math.Max(max, j - i + 1);
+        //
+        //    return max;
+        //}
+        //
+
+
+        // Day 6 Count the smiley faces!
+
+        // Given an array(arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+        // 
+        // Rules for a smiling face:
+        // 
+        // 
+        // Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+        //         A smiley face can have a nose but it does not have to.Valid characters for a nose are - or ~
+        //        Every smiling face must have a smiling mouth that should be marked with either ) or D
+        // No additional characters are allowed except for those mentioned.
+        // 
+        // Valid smiley face examples: :) :D ;-D :~)
+        // Invalid smiley faces: ;( :> :} :]
+
+        //Example
+        //countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+        //countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+        //countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+
+        // Day 7 - Maximum Length Difference
+
+        // You are given two arrays a1 and a2 of strings.Each string is composed with letters from a to z.Let x be any string in the first array and y be any string in the second array.
+        // 
+        // Find max(abs(length(x) − length(y)))
+        // 
+        // If a1 and/or a2 are empty return -1 in each language except in Haskell(F#) where you will return Nothing (None).
+        // 
+        // Example:
+        // a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+        // a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+        // mxdiflg(a1, a2) --> 13
+
+        public static int Mxdiflg(string[] a1, string[] a2)
         {
-            var arr = str.ToCharArray();
-            Array.Reverse(arr);
-            var reversed = new string(arr);
-            return str == reversed;
+            if (a1.Length <= 0 || a2.Length <= 0)
+                return -1;
+            var first = Math.Abs(a1.Max(x => x.Length) - a2.Min(x => x.Length));
+            var second = Math.Abs(a2.Max(x => x.Length) - a1.Min(x => x.Length));
+            return Math.Max(first, second);
         }
+    }
 
 
-
-        public static int GetLongestPalindrome(string str)
-        {
-            if (str == null) return 0;
-
-            int max = 0;
-            for (int i = 0; i < str.Length; ++i)
-                for (int j = i; j < str.Length; ++j)
-                    if (IsPalindrome(str.Substring(i, j - i + 1)))
-                        max = Math.Max(max, j - i + 1);
-
-            return max;
-        }
-
-
-        private static void Main(string[] args)
+    private static void Main(string[] args)
             {     
            
             }
