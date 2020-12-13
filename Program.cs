@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace _24DaysOfChristmasCodeingChallenges
+﻿namespace _24DaysOfChristmasCodeingChallenges
 {
-    class Program
+    internal class Program
     {
         //Consonant value
 
@@ -73,7 +68,6 @@ namespace _24DaysOfChristmasCodeingChallenges
         //Take the square root of the result.
         //Divide by two.
 
-
         //public static int PredictAge(params int[] ages)
         //{
         //
@@ -91,9 +85,9 @@ namespace _24DaysOfChristmasCodeingChallenges
         //For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
 
         //public static string Disemvowel(string str)
-        //{       
+        //{
         //    string vowels = "aeiouAEIOU";
-        //    return new String(str.Where(c => !vowels.Contains(c)).ToArray());        
+        //    return new String(str.Where(c => !vowels.Contains(c)).ToArray());
         //}
 
         // Day 4 - Encrypt this!
@@ -132,15 +126,15 @@ namespace _24DaysOfChristmasCodeingChallenges
         //    {
         //        return string.Empty;
         //    }
-        //    // take the 3 main elements we will be working with 
+        //    // take the 3 main elements we will be working with
         //    char firstLetter = charWordArray[0];
         //    char secondLetter = charWordArray[1];
         //    char lastLetter = charWordArray[charWordArray.Length - 1];
-        //    
+        //
         //    // convert first word to Ascii
         //    int ASCIICodeValueOfNumber = (int)firstLetter;
         //    string ASCIIStringed = ASCIICodeValueOfNumber.ToString();
-        //    // swap the second and last letter then add the new 1st indez = ascii code. 
+        //    // swap the second and last letter then add the new 1st indez = ascii code.
         //    charWordArray[1] = lastLetter;
         //    charWordArray[charWordArray.Length - 1] = secondLetter;
         //    string stringCharWordArray = new string(charWordArray);
@@ -150,7 +144,7 @@ namespace _24DaysOfChristmasCodeingChallenges
         //
         //// using the tool we created above we are able to create a turn the string into a array and loop through it changing each word to the encryped vers then add it to a new array to convert to a string sentence.
         //public static string EncryptThis(string input)
-        //{     
+        //{
         //    string encyrptedInput;
         //    int i = 0;
         //    string[] inputArray = input.Split();
@@ -168,7 +162,7 @@ namespace _24DaysOfChristmasCodeingChallenges
         //    return encyrptedInput;
         //}
 
-        //test cases 
+        //test cases
         // [TestCase("", "")]
         // [TestCase("A", "65")]
         // [TestCase("Ab", "65b")]
@@ -194,16 +188,16 @@ namespace _24DaysOfChristmasCodeingChallenges
         // Day 5 longest_palindrome
 
         // Longest Palindrome
-        // 
+        //
         // Find the length of the longest substring in the given string s that is the same in reverse.
-        // 
+        //
         // As an example, if the input was “I like racecars that go fast”, the substring(racecar) length would be 7.
-        // 
+        //
         // If the length of the input string is 0, the return value must be 0.
-        // 
+        //
         // Example:
-        // "a" -> 1 
-        // "aab" -> 2  
+        // "a" -> 1
+        // "aab" -> 2
         // "abcde" -> 1
         // "zzbaabcd" -> 4
         // "" -> 0
@@ -231,19 +225,18 @@ namespace _24DaysOfChristmasCodeingChallenges
         //}
         //
 
-
         // Day 6 Count the smiley faces!
 
         // Given an array(arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
-        // 
+        //
         // Rules for a smiling face:
-        // 
-        // 
+        //
+        //
         // Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
         //         A smiley face can have a nose but it does not have to.Valid characters for a nose are - or ~
         //        Every smiling face must have a smiling mouth that should be marked with either ) or D
         // No additional characters are allowed except for those mentioned.
-        // 
+        //
         // Valid smiley face examples: :) :D ;-D :~)
         // Invalid smiley faces: ;( :> :} :]
 
@@ -255,31 +248,55 @@ namespace _24DaysOfChristmasCodeingChallenges
         // Day 7 - Maximum Length Difference
 
         // You are given two arrays a1 and a2 of strings.Each string is composed with letters from a to z.Let x be any string in the first array and y be any string in the second array.
-        // 
+        //
         // Find max(abs(length(x) − length(y)))
-        // 
+        //
         // If a1 and/or a2 are empty return -1 in each language except in Haskell(F#) where you will return Nothing (None).
-        // 
+        //
         // Example:
         // a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
         // a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
         // mxdiflg(a1, a2) --> 13
 
-        public static int Mxdiflg(string[] a1, string[] a2)
+        //     public static int Mxdiflg(string[] a1, string[] a2)
+        //     {
+        //         if (a1.Length <= 0 || a2.Length <= 0)
+        //             return -1;
+        //         var first = Math.Abs(a1.Max(x => x.Length) - a2.Min(x => x.Length));
+        //         var second = Math.Abs(a2.Max(x => x.Length) - a1.Min(x => x.Length));
+        //         return Math.Max(first, second);
+        //     }
+        // }
+
+        // Day 8 Middle Character
+
+        // You are going to be given a word.Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+        //
+        // #Examples:
+        //
+        // Kata.getMiddle("test") should return "es"
+        //
+        // Kata.getMiddle("testing") should return "t"
+        //
+        // Kata.getMiddle("middle") should return "dd"
+        //
+        // Kata.getMiddle("A") should return "A"
+
+        public static string GetMiddle(string s)
         {
-            if (a1.Length <= 0 || a2.Length <= 0)
-                return -1;
-            var first = Math.Abs(a1.Max(x => x.Length) - a2.Min(x => x.Length));
-            var second = Math.Abs(a2.Max(x => x.Length) - a1.Min(x => x.Length));
-            return Math.Max(first, second);
+            if (string.IsNullOrEmpty(s) || s.Length == 0)
+                return "";
+
+            if (s.Length % 2 == 0)
+                return s.Substring((s.Length / 2) - 1, 2);
+
+            return s.Substring((s.Length / 2), 1);
         }
-    }
 
-
-    private static void Main(string[] args)
-            {     
-           
-            }
-        
+        private static void Main(string[] args)
+        {
+            GetMiddle("Helo");
+            GetMiddle("Hello");
+        }
     }
 }
