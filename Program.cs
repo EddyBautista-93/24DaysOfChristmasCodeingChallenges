@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+
+
 namespace _24DaysOfChristmasCodeingChallenges
 {
     internal class Program
@@ -309,18 +312,41 @@ namespace _24DaysOfChristmasCodeingChallenges
 
 
 
-        public static int SumTriangularNumbers(int n)
+        // public static int SumTriangularNumbers(int n)
+        // {
+        //     int sum = 0;
+        //     for (int i = 1; i <= n; i++)
+        //         sum += i * (i + 1) / 2;
+        //     return sum;
+        // }
+
+        // Day 9 -Fix string case
+
+        // In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+        // 
+        // make as few changes as possible.
+        // if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+        // For example:
+        // 
+        // solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+        // solve("CODe") = "CODE". Uppercase characters > lowecase.Change only the "e" to uppercase.
+        // solve("coDE") = "code". Upper == lowercase.Change all to lowercase.
+
+        public static string Solve(string s)
         {
-            int sum = 0;
-            for (int i = 1; i <= n; i++)
-                sum += i * (i + 1) / 2;
-            return sum;
+            return s.Count(char.IsLower) < s.Length / 2 ? s.ToUpper() : s.ToLower();
         }
+
+
 
         private static void Main(string[] args)
         {
-            SumTriangularNumbers(4);
-            
+            Solve("coDe");
+            Solve("CODe");
+            Solve("coDE");
+
+
+
         }
     }
 }
