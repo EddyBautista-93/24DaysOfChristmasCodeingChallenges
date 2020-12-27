@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-
-
-namespace _24DaysOfChristmasCodeingChallenges
+﻿namespace _24DaysOfChristmasCodeingChallenges
 {
     internal class Program
     {
@@ -290,27 +286,25 @@ namespace _24DaysOfChristmasCodeingChallenges
         // {
         //     if (string.IsNullOrEmpty(s) || s.Length == 0)
         //         return "";
-        // 
+        //
         //     if (s.Length % 2 == 0)
         //         return s.Substring((s.Length / 2) - 1, 2);
-        // 
+        //
         //     return s.Substring((s.Length / 2), 1);
         // }
 
         // Day 8 Sum of Triangular Numbers
 
         // Your task is to return the sum of Triangular Numbers up-to-and-including the nth Triangular Number.
-        // 
+        //
         // Triangular Number: "any of the series of numbers (1, 3, 6, 10, 15, etc.) obtained by continued summation of the natural numbers 1, 2, 3, 4, 5, etc."
-        // 
+        //
         // [01]
         // 02 [03]
         // 04 05 [06]
         // 07 08 09 [10]
         // 11 12 13 14 [15]
         // 16 17 18 19 20 [21]
-
-
 
         // public static int SumTriangularNumbers(int n)
         // {
@@ -323,11 +317,11 @@ namespace _24DaysOfChristmasCodeingChallenges
         // Day 9 -Fix string case
 
         // In this Kata, you will be given a string that may have mixed uppercase and lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
-        // 
+        //
         // make as few changes as possible.
         // if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
         // For example:
-        // 
+        //
         // solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
         // solve("CODe") = "CODE". Uppercase characters > lowecase.Change only the "e" to uppercase.
         // solve("coDE") = "code". Upper == lowercase.Change all to lowercase.
@@ -340,33 +334,57 @@ namespace _24DaysOfChristmasCodeingChallenges
         // Day 10 - Persistent
 
         // Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
-        // 
+        //
         // For example:
-        // 
+        //
         //  persistence(39) == 3 // because 3*9 = 27, 2*7 = 14, 1*4=4
         //                       // and 4 has only one digit
-        // 
+        //
         //  persistence(999) == 4 // because 9*9*9 = 729, 7*2*9 = 126,
         //                        // 1*2*6 = 12, and finally 1*2 = 2
-        // 
+        //
         //  persistence(4) == 0 // because 4 is already a one-digit number
 
-        public static int Persistence(long n)
+        // public static int Persistence(long n)
+        // {
+        //     int count = 0;
+        //     while (n > 9)
+        //     {
+        //         count++;
+        //         n = n.ToString().Select(digit => int.Parse(digit.ToString())).Aggregate((x, y) => x * y);
+        //     }
+        //     return count;
+        // }
+
+        // Day ??? - Find the odd int
+
+        // Given an array of integers, find the one that appears an odd number of times.
+        //
+        // There will always be only one integer that appears an odd number of times.
+
+        public static int find_it(int[] seq)
         {
-            int count = 0;
-            while (n > 9)
+            int arrSize = seq.Length;
+            for (int i = 0; i < arrSize; i++)
             {
-                count++;
-                n = n.ToString().Select(digit => int.Parse(digit.ToString())).Aggregate((x, y) => x * y);
+                int count = 0;
+
+                for (int j = 0; j < arrSize; j++)
+                {
+                    if (seq[i] == seq[j])
+                        count++;
+                }
+                if (count % 2 != 0)
+                    return seq[i];
             }
-            return count;
+
+            return -1;
         }
-
-
 
         private static void Main(string[] args)
         {
-            Persistence(39);
+            int[] testArray = { 20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5 };
+            find_it(testArray);
         }
     }
 }
