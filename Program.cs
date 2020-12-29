@@ -362,29 +362,73 @@
         //
         // There will always be only one integer that appears an odd number of times.
 
-        public static int find_it(int[] seq)
+        // public static int find_it(int[] seq)
+        // {
+        //     int arrSize = seq.Length;
+        //     for (int i = 0; i < arrSize; i++)
+        //     {
+        //         int count = 0;
+        // 
+        //         for (int j = 0; j < arrSize; j++)
+        //         {
+        //             if (seq[i] == seq[j])
+        //                 count++;
+        //         }
+        //         if (count % 2 != 0)
+        //             return seq[i];
+        //     }
+        // 
+        //     return -1;
+        // }
+
+
+        // Build Tower
+
+        // Build Tower
+        // Build Tower by the following given argument:
+        // number of floors(integer and always greater than 0).
+        // 
+        // Tower block is represented as *
+        // 
+        // C#: returns a string[];
+        // PHP: returns an array;
+        // C++: returns a vector<string>;
+        // Haskell: returns a[String];
+        // Ruby: returns an Array;
+        // Lua: returns a Table;
+        // Have fun!
+        // 
+        // for example, a tower of 3 floors looks like below
+        // 
+        // [
+        //   '  *  ',
+        //   ' *** ',
+        //   '*****'
+        // ]
+        // and a tower of 6 floors looks like below
+        // 
+        // [
+        //   '     *     ',
+        //   '    ***    ',
+        //   '   *****   ',
+        //   '  *******  ',
+        //   ' ********* ',
+        //   '***********'
+        // ]
+        public static string[] TowerBuilder(int nFloors)
         {
-            int arrSize = seq.Length;
-            for (int i = 0; i < arrSize; i++)
-            {
-                int count = 0;
-
-                for (int j = 0; j < arrSize; j++)
-                {
-                    if (seq[i] == seq[j])
-                        count++;
-                }
-                if (count % 2 != 0)
-                    return seq[i];
-            }
-
-            return -1;
+            var result = new string[nFloors];
+            for (int i = 0; i < nFloors; i++)
+                result[i] = string.Concat(new string(' ', nFloors - i - 1),
+                                          new string('*', i * 2 + 1),
+                                          new string(' ', nFloors - i - 1));
+            return result;
         }
+
 
         private static void Main(string[] args)
         {
-            int[] testArray = { 20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5 };
-            find_it(testArray);
+            TowerBuilder(8);
         }
     }
 }
