@@ -415,20 +415,62 @@
         //   ' ********* ',
         //   '***********'
         // ]
-        public static string[] TowerBuilder(int nFloors)
-        {
-            var result = new string[nFloors];
-            for (int i = 0; i < nFloors; i++)
-                result[i] = string.Concat(new string(' ', nFloors - i - 1),
-                                          new string('*', i * 2 + 1),
-                                          new string(' ', nFloors - i - 1));
-            return result;
-        }
+        // public static string[] TowerBuilder(int nFloors)
+        // {
+        //     var result = new string[nFloors];
+        //     for (int i = 0; i < nFloors; i++)
+        //         result[i] = string.Concat(new string(' ', nFloors - i - 1),
+        //                                   new string('*', i * 2 + 1),
+        //                                   new string(' ', nFloors - i - 1));
+        //     return result;
+        // }
 
+        // Sort the oddd
+
+        // You will be given an array of numbers.You have to sort the odd numbers 
+        // in ascending order while leaving the even numbers at their original positions.
+
+       // Examples
+       // [7, 1]  =>  [1, 7]
+       // [5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+       // [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+
+        public static int[] SortArray(int[] array)
+        {
+            //temp variable for holding larger value for switching
+            int temp = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                //If the value is 'even' continue with outer loop
+                if (array[i] % 2 == 0)
+                    continue;
+
+                //Inner loop to compare array values
+                for (int j = (i + 1); j < array.Length; j++)
+                {
+                    //If this value is not even do comparison
+                    if (array[j] % 2 != 0)
+                    {
+                        //If the left value is greater than the right value
+                        //swap them
+                        if (array[i] > array[j])
+                        {
+                            temp = array[i];
+                            array[i] = array[j];
+                            array[j] = temp;
+                        }
+                    }
+                }
+            }
+
+            return array;
+        }
 
         private static void Main(string[] args)
         {
-            TowerBuilder(8);
+            int[] testArray = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+            SortArray(testArray);
         }
     }
 }
